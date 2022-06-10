@@ -43,7 +43,8 @@ const appVue = new Vue({
     el : ".slider-wrapper",
     data : {
         slides: slides,
-        currentItemIndex : 0
+        currentItemIndex : 0,
+        autoplayStatus : true
     },
     methods : {
         previousImg() {
@@ -62,12 +63,26 @@ const appVue = new Vue({
         },
         selectImg(i) {
             this.currentItemIndex = i;
+        },
+        autoplay() {
+            const self = this;
+            const rotateThumbnails = setInterval(function() {
+                if (self.autoplayStatus) {
+                    self.nextImg();
+                } else {
+                    clearInterval(rotateThumbnails);
+                }
+            }, 3000);
+        },
+        resumeAutoplay() {
+            this.autoplayStatus = true;
+            this.autoplay();
+        },
+        pauseAutoplay() {
+            this.autoplayStatus = false;
         }
     },
     mounted: function() {
-        const self = this;
-        const rotateThumbnails = setInterval(function() {
-            self.nextImg();
-        }, 3000);
+        this.autoplay();
     }
 });
