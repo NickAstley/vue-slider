@@ -17,11 +17,11 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img :src="item.img.src" :alt="item.img.alt" />
+                    <img :src="slides[currentItemIndex].image" :alt="slides[currentItemIndex].title" />
                     <div class="text">
-                        <h3>{{item.title}}</h3>
+                        <h3>{{slides[currentItemIndex].title}}</h3>
                         <p>
-                            {{item.text}}
+                            {{slides[currentItemIndex].text}}
                         </p>
                     </div>
                 </div>

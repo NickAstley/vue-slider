@@ -3,10 +3,10 @@ Far funzionare lo slider partendo dall’html ricevuto.
 Al click su una freccia, l’immagine mostrata cambia.
 la lista delle thumbs deve essere generata tramite un v-for
 Bonus:
-1- al click su una thumb, visualizzare in grande l’immagine corrispondente
-2 - Al click sulle frecce, cambia l’immagine, ma si evidenzia anche la thumbnail corrispondente
-3- applicare l’autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente (vi servirà l’evento mounted() di vue)
-4- quando il mouse va in hover sullo slider, bloccare l’autoplay e farlo riprendere quando esce
+1 - al click su una thumb, visualizzare in grande l’immagine corrispondente
+2 - al click sulle frecce, cambia l’immagine, ma si evidenzia anche la thumbnail corrispondente
+3 - applicare l’autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente (vi servirà l’evento mounted() di vue)
+4 - quando il mouse va in hover sullo slider, bloccare l’autoplay e farlo riprendere quando esce
 */
 
 const slides = [
@@ -43,14 +43,6 @@ const appVue = new Vue({
     el : ".slider-wrapper",
     data : {
         slides: slides,
-        item: {
-            img : {
-                src : slides[0].image,
-                alt : slides[0].title
-            },
-            title : slides[0].title,
-            text : slides[0].text
-        },
         currentItemIndex : 0
     },
     methods : {
@@ -60,9 +52,6 @@ const appVue = new Vue({
             } else {
                 this.currentItemIndex = slides.length - 1;
             }
-            this.item.img.src = slides[this.currentItemIndex].image;
-            this.item.title = slides[this.currentItemIndex].title;
-            this.item.text = slides[this.currentItemIndex].text;
         },
         nextImg () {
             if (this.currentItemIndex < (slides.length - 1)){
@@ -70,15 +59,9 @@ const appVue = new Vue({
             } else {
                 this.currentItemIndex = 0;
             }
-            this.item.img.src = slides[this.currentItemIndex].image;
-            this.item.title = slides[this.currentItemIndex].title;
-            this.item.text = slides[this.currentItemIndex].text;
         },
         selectImg (i) {
             this.currentItemIndex = i;
-            this.item.img.src = slides[i].image;
-            this.item.title = slides[i].title;
-            this.item.text = slides[i].text;
         }
     }
 });
