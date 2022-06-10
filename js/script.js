@@ -73,6 +73,12 @@ const appVue = new Vue({
             this.item.img.src = slides[this.currentItemIndex].image;
             this.item.title = slides[this.currentItemIndex].title;
             this.item.text = slides[this.currentItemIndex].text;
+        },
+        selectImg (i) {
+            this.currentItemIndex = i;
+            this.item.img.src = slides[i].image;
+            this.item.title = slides[i].title;
+            this.item.text = slides[i].text;
         }
     }
 });
