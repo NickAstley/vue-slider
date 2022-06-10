@@ -46,22 +46,28 @@ const appVue = new Vue({
         currentItemIndex : 0
     },
     methods : {
-        previousImg () {
+        previousImg() {
             if (this.currentItemIndex > 0) {
                 this.currentItemIndex--;
             } else {
                 this.currentItemIndex = slides.length - 1;
             }
         },
-        nextImg () {
+        nextImg() {
             if (this.currentItemIndex < (slides.length - 1)){
                 this.currentItemIndex++;
             } else {
                 this.currentItemIndex = 0;
             }
         },
-        selectImg (i) {
+        selectImg(i) {
             this.currentItemIndex = i;
         }
+    },
+    mounted: function() {
+        const self = this;
+        const rotateThumbnails = setInterval(function() {
+            self.nextImg();
+        }, 3000);
     }
 });
